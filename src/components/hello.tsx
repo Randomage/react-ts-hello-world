@@ -10,8 +10,8 @@ export interface HelloProps { compiler: string; framework: string; }
 const HelloComponent = (props: HelloProps) => <div>
     <h1>Hello from {props.compiler} and {props.framework} at {new Date().toString()}!</h1>
     <img src={image}></img>
-    <OnlyMe message="Only me"></OnlyMe>
-    <OnlyMeToo message="Only me2"></OnlyMeToo>
+    <OnlyMe message="om"></OnlyMe>
+    <OnlyMeToo message="Only me"></OnlyMeToo>
     <button onClick={printMessage}>Click me</button>
 </div>;
 

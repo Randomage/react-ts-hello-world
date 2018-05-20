@@ -7,7 +7,7 @@ class OnlyMeComponent extends React.Component<{ message: string }> {
 
   render() {
     return <div>
-      <h1>{this.props.message} at {this.date} !!!!</h1 >
+      <h1>{this.props.message} at {this.date} !!!!</h1>
     </div >;
   }
 }

@@ -1,13 +1,17 @@
 import * as React from "react";
 import { render } from "react-dom";
 import { createStore } from "redux";
+import { Provider } from 'react-redux';
 import './style.css';
 
-import { Hello } from "./components/hello";
+import { rootReducer } from "./reducers";
+import { LastWeekTimeList } from "./components/containers/lastWeekTimeList";
 
-const storage = createStore();
+const store = createStore(rootReducer);
 
 render(
-    <Hello compiler="TypeScript" framework="React" />,
+    <Provider store={store}>
+        <LastWeekTimeList></LastWeekTimeList>
+    </Provider>,
     document.getElementsByTagName("app-body")[0]
 );

@@ -1,11 +1,14 @@
-import React = require("react");
-import { hot } from "react-hot-loader";
+import React = require('react');
+import { hot } from 'react-hot-loader';
 
-export interface HelloProps { compiler: string; framework: string; }
-
-const TimeListComponent = ({ times } = { times: Date[] }) =>
+const TimeListComponent = ({ times, onClick }: { times: Date[], onClick: () => void }) =>
     <div>
-        <p></p>
+        <div>
+            {
+                times.map(t => <p>{t.toISOString()}</p>)
+            }
+        </div>
+        <button onClick={onClick}>Click me</button>
     </div>;
 
 export const TimeList = hot(module)(TimeListComponent);

@@ -5,13 +5,17 @@ import { Provider } from 'react-redux';
 import './style.css';
 
 import { rootReducer } from "./reducers";
-import { LastWeekTimeList } from "./components/containers/lastWeekTimeList";
+import { MostRecentTimeList } from "./components/containers/mostRecentTimeList";
+import { OldestTimeList } from "./components/containers/oldestTimeList";
 
 const store = createStore(rootReducer);
 
 render(
     <Provider store={store}>
-        <LastWeekTimeList></LastWeekTimeList>
+        <div>
+            <MostRecentTimeList></MostRecentTimeList>
+            <OldestTimeList></OldestTimeList>
+        </div>
     </Provider>,
     document.getElementsByTagName("app-body")[0]
 );

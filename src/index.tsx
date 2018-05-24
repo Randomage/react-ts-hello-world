@@ -1,12 +1,13 @@
+import "./style.css";
+
 import * as React from "react";
 import { render } from "react-dom";
+import { Provider } from "react-redux";
 import { createStore } from "redux";
-import { Provider } from 'react-redux';
-import './style.css';
 
-import { rootReducer } from "./reducers";
 import { MostRecentTimeList } from "./components/containers/mostRecentTimeList";
 import { OldestTimeList } from "./components/containers/oldestTimeList";
+import { rootReducer } from "./reducers";
 
 const store = createStore(rootReducer);
 

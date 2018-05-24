@@ -1,7 +1,8 @@
+import { hot } from "react-hot-loader";
 import { connect } from "react-redux";
+
 import { appendTime } from "../../actions";
 import { TimeList } from "../presentation/timeList";
-import { hot } from "react-hot-loader";
 
 const oldest = (maxLength: number, dates: Date[]) =>
     dates.sort((a, b) => b.getTime() - a.getTime()).slice(0, maxLength);
@@ -9,16 +10,14 @@ const oldest = (maxLength: number, dates: Date[]) =>
 const threeMostRecent = oldest.bind(undefined, 3);
 
 const mapStateToProps = (state: any) => ({
-    times: threeMostRecent(state.times)
+    times: threeMostRecent(state.times),
 });
 
-const mapDispatchToProps = (dispatch: any) => {
-    return {
-        onClick: () => {
-            dispatch(appendTime(new Date()))
-        }
+const mapDispatchToProps = (dispatch: any) => (
+    {
+        onClick: () => dispatch(appendTime(new Date())),
     }
-};
+);
 
 const OldestTimeListComponent = connect(
     mapStateToProps,

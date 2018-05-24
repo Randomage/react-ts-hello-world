@@ -7,7 +7,7 @@ interface FsaSuccess<Action extends string, Payload, Meta> {
 
     meta: Meta;
 
-    error: false | undefined;
+    error?: false;
 }
 
 interface FsaError<Action extends string> {
@@ -36,12 +36,11 @@ const x: (a: Fsa<"action", number> | Fsa<"otherAction">) => boolean =
                             return false;
                         case "otherAction":
                             return false;
-                    };
+                    }
                 };
                 return r();
             case true:
                 return true;
         }
-
 
     };

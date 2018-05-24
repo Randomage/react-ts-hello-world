@@ -1,7 +1,7 @@
 import { hot } from "react-hot-loader";
 import { connect } from "react-redux";
 
-import { appendTime } from "../../actions";
+import { appendTime, removeOldestTime } from "../../actions";
 import { TimeList } from "../presentation/timeList";
 
 const oldest = (maxLength: number, dates: Date[]) =>
@@ -15,7 +15,8 @@ const mapStateToProps = (state: any) => ({
 
 const mapDispatchToProps = (dispatch: any) => (
     {
-        onClick: () => dispatch(appendTime(new Date())),
+        addNewTime: () => dispatch(appendTime(new Date())),
+        removeOldestTime: () => dispatch(removeOldestTime())
     }
 );
 

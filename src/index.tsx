@@ -7,7 +7,7 @@ import { createStore } from "redux";
 
 import { MostRecentTimeList } from "./components/containers/mostRecentTimeList";
 import { OldestTimeList } from "./components/containers/oldestTimeList";
-import { rootReducer } from "./reducers";
+import { rootReducer } from "./rootReducer";
 
 const store = createStore(rootReducer);
 

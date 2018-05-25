@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
-import { times } from "./times";
+
+import { default as times } from "./times";
 
 export const rootReducer = times;

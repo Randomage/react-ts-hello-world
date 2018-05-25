@@ -2,8 +2,8 @@ import { hot } from "react-hot-loader";
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 
-import { appendTime, removeOldestTime } from "../../actions";
 import { asVoid } from "../../asVoid";
+import { appendTime, removeOldestTime } from "../../times";
 import { TimeList, TimeListProps } from "../presentation/timeList";
 
 const oldest = (maxLength: number) => (dates: Date[]) =>

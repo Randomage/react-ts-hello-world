@@ -1,8 +1,13 @@
 import * as React from "react";
 import { hot } from "react-hot-loader";
 
-const TimeListComponent = ({ times, addNewTime, removeOldestTime }:
-    { times: Date[], addNewTime: () => void, removeOldestTime: () => void }) =>
+export interface TimeListProps {
+    times: Date[];
+    addNewTime: () => void;
+    removeOldestTime: () => void;
+}
+
+const TimeListComponent: React.SFC<TimeListProps> = ({ times, addNewTime, removeOldestTime }) =>
     <div>
         <div>
             {

@@ -1,22 +1,24 @@
 import { hot } from "react-hot-loader";
 import { connect } from "react-redux";
+import { Dispatch } from "redux";
 
 import { appendTime, removeOldestTime } from "../../actions";
-import { TimeList } from "../presentation/timeList";
+import { asVoid } from "../../asVoid";
+import { TimeList, TimeListProps } from "../presentation/timeList";
 
-const mostRecent = (maxLength: number, dates: Date[]) =>
+const mostRecent = (maxLength: number) => (dates: Date[]) =>
     dates.sort((a, b) => a.getTime() - b.getTime()).slice(0, maxLength);
 
-const threeMostRecent = mostRecent.bind(undefined, 3);
+const threeMostRecent = mostRecent(3);
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: TimeListProps) => ({
     times: threeMostRecent(state.times)
 });
 
-const mapDispatchToProps = (dispatch: any) => (
+const mapDispatchToProps = (dispatch: Dispatch) => (
     {
-        addNewTime: () => dispatch(appendTime(new Date())),
-        removeOldestTime: () => dispatch(removeOldestTime())
+        addNewTime: asVoid(() => dispatch(appendTime(new Date()))),
+        removeOldestTime: asVoid(() => dispatch(removeOldestTime()))
     }
 );
 

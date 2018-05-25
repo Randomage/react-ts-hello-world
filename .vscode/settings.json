@@ -1,5 +1,5 @@
 {
-    "tslint.configFile": "C:/Users/Joshua/Source/Repos/react-ts-hello-world/tslint.json",
+    "tslint.configFile": "./tslint.json",
     "tslint.autoFixOnSave": true,
     "tslint.enable": true
 }

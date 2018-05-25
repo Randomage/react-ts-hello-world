@@ -1,3 +1,5 @@
+import { List } from "immutable";
+
 import { times } from "./times";
 
 describe("times", () => {
@@ -7,7 +9,7 @@ describe("times", () => {
         it("adds time to list", () => {
 
             const result = times(
-                { times: [new Date(2018, 1, 2, 12, 11, 10)] },
+                { times: List<Date>([new Date(2018, 1, 2, 12, 11, 10)]) },
                 {
                     type: "APPEND_TIME",
                     payload: new Date(2016, 0, 1, 12, 11, 10)
@@ -15,10 +17,10 @@ describe("times", () => {
             );
 
             expect(result).toEqual({
-                times: [
+                times: List<Date>([
                     new Date(2018, 1, 2, 12, 11, 10),
                     new Date(2016, 0, 1, 12, 11, 10)
-                ]
+                ])
             });
 
         });
@@ -31,11 +33,11 @@ describe("times", () => {
 
             const result = times(
                 {
-                    times: [
+                    times: List<Date>([
                         new Date(2018, 1, 2, 12, 11, 10),
                         new Date(2018, 1, 2, 10, 11, 10),
                         new Date(2018, 1, 2, 11, 11, 10)
-                    ]
+                    ])
                 },
                 {
                     type: "REMOVE_OLDEST_TIME"
@@ -43,10 +45,10 @@ describe("times", () => {
             );
 
             expect(result).toEqual({
-                times: [
+                times: List<Date>([
                     new Date(2018, 1, 2, 12, 11, 10),
                     new Date(2018, 1, 2, 11, 11, 10)
-                ]
+                ])
             });
 
         });
@@ -57,14 +59,14 @@ describe("times", () => {
 
                 const result = times(
                     {
-                        times: []
+                        times: List<Date>()
                     },
                     {
                         type: "REMOVE_OLDEST_TIME"
                     }
                 );
 
-                expect(result).toEqual({ times: [] });
+                expect(result).toEqual({ times: List<Date>() });
 
             });
 

@@ -5,19 +5,24 @@ import * as actions from "../actions/index";
 
 export type TimesAction = ActionType<typeof actions>;
 
+interface State {
+    readonly times: ReadonlyArray<Date>;
+}
+
 const initialState = { times: new Array<Date>() };
 
-const removeOldestTime = (t: Date[]) => {
-    const oldest = t.sort((a, b) => b.getTime() - a.getTime())[-1];
-    const oldestIndex = t.indexOf(oldest);
+const removeOldestTime = (allTimes: ReadonlyArray<Date>) => {
+    const copy = allTimes.slice();
 
-    const withOldestRemoved = t.slice();
-    withOldestRemoved.splice(oldestIndex, 1);
+    const oldest = copy.sort((a, b) => b.getTime() - a.getTime())[-1];
+    const oldestIndex = copy.indexOf(oldest);
 
-    return withOldestRemoved;
+    copy.splice(oldestIndex, 1);
+
+    return copy;
 };
 
-export const times = (state = initialState, action: TimesAction) => {
+export const times = (state: State = initialState, action: TimesAction) => {
 
     switch (action.type) {
         case getType(actions.appendTime):

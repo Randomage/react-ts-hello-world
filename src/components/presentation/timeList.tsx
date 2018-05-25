@@ -11,7 +11,7 @@ const TimeListComponent: React.SFC<TimeListProps> = ({ times, addNewTime, remove
     <div>
         <div>
             {
-                times.map((t) => <p>{t.toISOString()}</p>)
+                times.map((t, i) => <p key={i}>{t.toISOString()}</p>)
             }
         </div>
         <button onClick={addNewTime}>Add new time</button>
